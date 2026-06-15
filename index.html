@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keerthivasan V — Portfolio</title>
+<link rel="icon" type="image/png" href="keerthivasan-contact.png">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 <!-- EmailJS SDK -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -21,9 +22,9 @@
     --neon-green: #39ff14;
     --neon-pink: #ff2d9b;
     --neon-orange: #ff6b00;
-    --bg-dark: #030810;
-    --bg-card: #070f1e;
-    --bg-card2: #0a1628;
+    --bg-dark: #000000;
+    --bg-card: rgba(7, 15, 30, 0.62);
+    --bg-card2: rgba(10, 22, 40, 0.72);
     --text-main: #e8f4ff;
     --text-dim: #6a8aaa;
   }
@@ -258,9 +259,8 @@
   .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(275px,1fr)); gap:1.4rem; }
   .skill-category {
     background:var(--bg-card); border:1px solid rgba(255,255,255,.07);
-    padding:1.5rem; position:relative; transition:border-color .3s,transform .3s;
+    padding:1.5rem; position:relative;
   }
-  .skill-category:hover { border-color:rgba(0,245,255,.28); transform:translateY(-4px); }
   .skill-category::before {
     content:attr(data-num); position:absolute; top:.8rem; right:1rem;
     font-family:'Orbitron',monospace; font-size:2.2rem; font-weight:900;
@@ -312,7 +312,7 @@
   .project-card {
     background:var(--bg-card); border:1px solid rgba(255,255,255,.07);
     padding:1.8rem; position:relative; overflow:hidden;
-    transition:all .3s; cursor:none;
+    cursor:none;
   }
   .project-card::before {
     content:''; position:absolute; top:-60%; left:-60%;
@@ -321,10 +321,6 @@
     animation:rotateConic 10s linear infinite; opacity:0; transition:opacity .4s;
   }
   .project-card:hover::before { opacity:1; }
-  .project-card:hover {
-    border-color:rgba(0,245,255,.28); transform:translateY(-6px);
-    box-shadow:0 22px 45px rgba(0,0,0,.5),0 0 28px rgba(0,245,255,.07);
-  }
   @keyframes rotateConic { to { transform:rotate(360deg); } }
   .proj-num { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--text-dim); letter-spacing:.2em; margin-bottom:.7rem; }
   .proj-title { font-family:'Orbitron',monospace; font-size:.95rem; font-weight:700; margin-bottom:.75rem; line-height:1.35; }
@@ -347,12 +343,11 @@
   .cert-card {
     background:var(--bg-card); border:1px solid rgba(255,255,255,.07);
     padding:1.3rem 1.3rem 1.3rem 1.6rem; position:relative; overflow:hidden;
-    transition:all .3s; cursor:none;
+    cursor:none;
   }
   .cert-left-bar {
     position:absolute; left:0; top:0; bottom:0; width:3px;
   }
-  .cert-card:hover { transform:translateY(-3px); }
   .cert-org { font-family:'Space Mono',monospace; font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.35rem; }
   .cert-title { font-family:'Orbitron',monospace; font-size:.72rem; font-weight:700; color:var(--text-main); line-height:1.45; margin-bottom:.4rem; }
   .cert-date { font-family:'Space Mono',monospace; font-size:.58rem; color:var(--text-dim); }
@@ -373,7 +368,7 @@
     background:var(--bg-card); border:1px solid rgba(0,245,255,.18);
     padding:1.5rem; position:relative; overflow:hidden;
   }
-  #game-canvas { border:1px solid rgba(0,245,255,.12); display:block; margin:0 auto; cursor:none; }
+  #game-canvas { border:1px solid rgba(0,245,255,.12); display:block; margin:0 auto; cursor:none; max-width: 100%; height: auto; }
   .game-hud {
     font-family:'Orbitron',monospace; font-size:.78rem; color:var(--neon-cyan);
     margin-top:.8rem; letter-spacing:.2em;
@@ -382,7 +377,7 @@
 
   /* CONTACT */
   #contact { background:transparent; min-height:100vh; }
-  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; max-width:960px; }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; max-width:960px; position:relative; z-index:1; }
   .contact-info-title {
     font-family:'Orbitron',monospace; font-size:.85rem; font-weight:700;
     color:var(--text-dim); letter-spacing:.15em; text-transform:uppercase; margin-bottom:1.4rem;
@@ -421,6 +416,17 @@
     border-color:var(--neon-cyan); box-shadow:0 0 0 2px rgba(0,245,255,.1),inset 0 0 8px rgba(0,245,255,.03);
   }
   .form-textarea { min-height:110px; }
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text-dim);
+    opacity: 0.6;
+  }
+  .form-input:-webkit-autofill,
+  .form-input:-webkit-autofill:hover, 
+  .form-input:-webkit-autofill:focus,
+  .form-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--bg-card) inset !important;
+    -webkit-text-fill-color: var(--text-main) !important;
+  }
   .form-status {
     font-family:'Space Mono',monospace; font-size:.68rem; letter-spacing:.1em;
     padding:.5rem; text-align:center; display:none;
@@ -487,20 +493,24 @@
     66% { clip-path: inset(15% 0 65% 0); transform: translateY(1px); }
     100% { clip-path: inset(55% 0 25% 0); transform: translateY(-1px); }
   }
-
-  /* PARTICLE */
-  .particle {
-    position:fixed; width:2px; height:2px; background:var(--neon-cyan);
-    border-radius:50%; pointer-events:none; z-index:0; opacity:.35;
-    animation:floatup linear infinite;
+  /* FLOATING IN SPACE CARDS */
+  .xp-card, .skill-category, .project-card, .cert-card {
+    animation: space-float 6s ease-in-out infinite;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
-  @keyframes floatup {
-    0% { transform:translateY(100vh); opacity:0; }
-    10% { opacity:.4; }
-    90% { opacity:.15; }
-    100% { transform:translateY(-8vh) translateX(15px); opacity:0; }
+  .xp-card:hover, .skill-category:hover, .project-card:hover, .cert-card:hover {
+    animation-play-state: paused;
+    transform: translateY(-12px) scale(1.015);
+    box-shadow: 0 16px 36px rgba(0, 245, 255, 0.12), 0 0 20px rgba(0, 245, 255, 0.04);
+    border-color: rgba(0, 245, 255, 0.35);
   }
-
+  @keyframes space-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-7px) rotate(0.4deg); }
+  }
   /* FOOTER */
   footer {
     position:relative; z-index:1; text-align:center; padding:2rem;
@@ -720,14 +730,110 @@
     nav{padding:1rem 1.5rem;}
     .nav-links{display:none;}
     .stat-bars{display:none;}
-    .hero-img-box{right:5%;height:60vh;opacity:0.2;}
-    .contact-img-box{display:none;}
-    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .hero-img-box{right:5%;height:60vh;z-index:-1;}
+    .hero-img-box .glitch-wrapper{opacity:0.2;}
+    .contact-img-box{display:block;right:0;width:100%;height:60vh;z-index:-1;}
+    .contact-img-box .smooth-glitch-wrapper{opacity:0.2;}
+    .about-grid{grid-template-columns:1fr;}
+    .contact-grid{
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 3rem;
+      align-items: stretch;
+    }
+    .game-arena { padding: 0.8rem; }
     section{padding:5rem 4vw;}
     #achievement-toast-container {
       bottom: 15px;
       right: 15px;
       max-width: 290px;
+    }
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    .project-card {
+      padding: 1rem;
+    }
+    .proj-desc {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+    .proj-tech {
+      margin-bottom: 0.8rem;
+    }
+    .cert-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+    .cert-card {
+      padding: 0.8rem 0.8rem 0.8rem 1.1rem;
+    }
+    .cert-title {
+      padding-right: 1.8rem;
+    }
+  }
+
+  /* DESKTOP-ONLY STYLING (ENLARGED CONTAINERS) */
+  @media(min-width:1025px) {
+    section {
+      padding: 8rem 10vw;
+    }
+    .nav-logo {
+      font-size: 1.12rem;
+    }
+    .nav-links a {
+      font-size: .76rem;
+    }
+    .about-grid {
+      gap: 5rem;
+    }
+    .xp-card {
+      padding: 2.8rem;
+    }
+    .xp-stats {
+      gap: 1.2rem;
+    }
+    .xp-stat {
+      padding: 1.4rem 1.6rem;
+    }
+    .xp-stat-val {
+      font-size: 2.2rem;
+    }
+    .skills-grid {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+    .skill-category {
+      padding: 2rem;
+    }
+    .timeline {
+      max-width: 950px;
+    }
+    .tl-item {
+      padding-left: 3.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .projects-grid {
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.8rem;
+    }
+    .project-card {
+      padding: 2.4rem;
+    }
+    .cert-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+    .cert-card {
+      padding: 1.6rem 1.6rem 1.6rem 2.2rem;
+    }
+    .game-wrap {
+      max-width: 700px;
+    }
+    .contact-grid {
+      max-width: 1200px;
+      gap: 6rem;
     }
   }
 </style>
@@ -741,7 +847,10 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero">KV.EXE</a>
+  <a class="nav-logo" href="#hero" style="display: flex; align-items: center; gap: 0.6rem;">
+    <img src="Keerthivasan.png" alt="KV Logo" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan);">
+    KV.EXE
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -818,7 +927,7 @@
       <div class="xp-stats">
         <div class="xp-stat"><span class="xp-stat-val">13+</span><div class="xp-stat-lbl">Certifications</div></div>
         <div class="xp-stat"><span class="xp-stat-val">2+</span><div class="xp-stat-lbl">Internships</div></div>
-        <div class="xp-stat"><span class="xp-stat-val">8+</span><div class="xp-stat-lbl">GH Repos</div></div>
+        <div class="xp-stat"><span class="xp-stat-val">10+</span><div class="xp-stat-lbl">GH Repos</div></div>
         <div class="xp-stat"><span class="xp-stat-val">∞</span><div class="xp-stat-lbl">Drive</div></div>
       </div>
       <div style="margin-top:1.4rem">
@@ -1128,12 +1237,12 @@
     <p class="game-desc reveal">
       Welcome to <strong style="color:var(--neon-cyan)">CODE RUNNER</strong>.<br>
       Pilot the ship. Collect cyan orbs (+1 XP each). Dodge the red bugs.<br>
-      Move with mouse or arrow keys. How high can you score?
+      Move with drag, mouse or arrow keys. How high can you score?
     </p>
     <div class="game-arena reveal">
       <canvas id="game-canvas" width="540" height="300"></canvas>
       <div class="game-hud">SCORE: <span id="score-val">0</span> &nbsp;|&nbsp; BEST: <span id="hi-val">0</span></div>
-      <div class="game-hint">CLICK TO START · MOUSE OR ← → TO MOVE</div>
+      <div class="game-hint">CLICK / TOUCH TO START · DRAG OR ARROWS TO MOVE</div>
     </div>
   </div>
 </section>
@@ -1229,46 +1338,212 @@ window.addEventListener('scroll',()=>{
   document.getElementById('progress').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
 });
 
-// ── BACKGROUND CANVAS ──
-const bc=document.getElementById('bg-canvas');
-const bx=bc.getContext('2d');
-function resizeBg(){bc.width=innerWidth;bc.height=innerHeight;}
-resizeBg(); window.addEventListener('resize',resizeBg);
-let bt=0;
-(function drawBg(){
-  bx.clearRect(0,0,bc.width,bc.height);
-  // Grid
-  bx.strokeStyle='rgba(0,245,255,0.04)';bx.lineWidth=0.5;
-  for(let x=0;x<bc.width;x+=55){bx.beginPath();bx.moveTo(x,0);bx.lineTo(x,bc.height);bx.stroke();}
-  for(let y=0;y<bc.height;y+=55){bx.beginPath();bx.moveTo(0,y);bx.lineTo(bc.width,y);bx.stroke();}
-  // Glowing orbs
-  for(let i=0;i<7;i++){
-    const ox=(Math.sin(bt*.25+i*1.4)*.42+.5)*bc.width;
-    const oy=(Math.cos(bt*.18+i*.95)*.42+.5)*bc.height;
-    const or=55+Math.sin(bt+i)*22;
-    const colors=['rgba(0,245,255,0.055)','rgba(191,95,255,0.04)','rgba(57,255,20,0.03)'];
-    const g=bx.createRadialGradient(ox,oy,0,ox,oy,or);
-    g.addColorStop(0,colors[i%3]);g.addColorStop(1,'transparent');
-    bx.fillStyle=g;bx.beginPath();bx.arc(ox,oy,or,0,Math.PI*2);bx.fill();
+// ── NEURAL NETWORK BACKGROUND CANVAS ──
+(function() {
+  const bc = document.getElementById('bg-canvas');
+  const bx = bc.getContext('2d');
+  
+  let width = bc.width = window.innerWidth;
+  let height = bc.height = window.innerHeight;
+  
+  let particles = [];
+  let mouse = { x: null, y: null, active: false, speed: 0, lastX: null, lastY: null };
+  let camera = { x: 0, y: 0, targetX: 0, targetY: 0 };
+  
+  function getParticleCount() {
+    return Math.min(220, Math.floor((window.innerWidth * window.innerHeight) / 7500));
   }
-  bt+=.005;
-  requestAnimationFrame(drawBg);
+  
+  class Particle {
+    constructor() {
+      this.reset(true);
+    }
+    
+    reset(init = false) {
+      this.x = Math.random() * width;
+      this.y = init ? Math.random() * height : (Math.random() * 20 > 10 ? -10 : height + 10);
+      
+      this.depth = 0.5 + Math.random() * 1.0;
+      this.r = (0.8 + Math.random() * 1.2) * this.depth;
+      this.alpha = (0.3 + Math.random() * 0.5);
+      
+      this.baseVx = (Math.random() - 0.5) * 0.4 * this.depth;
+      this.baseVy = (Math.random() - 0.5) * 0.4 * this.depth;
+      
+      this.vx = this.baseVx;
+      this.vy = this.baseVy;
+    }
+    
+    update() {
+      if (mouse.active && mouse.x !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.hypot(dx, dy);
+        
+        if (dist < 180) {
+          const force = (180 - dist) / 180;
+          const forceDirection = mouse.speed > 8 ? -1.2 : 1.0;
+          
+          if (forceDirection > 0) {
+            this.vx += (dx / dist) * force * 0.12 * this.depth;
+            this.vy += (dy / dist) * force * 0.12 * this.depth;
+          } else {
+            this.vx -= (dx / dist) * force * 0.6 * this.depth;
+            this.vy -= (dy / dist) * force * 0.6 * this.depth;
+          }
+        }
+      }
+      
+      this.vx *= 0.94;
+      this.vy *= 0.94;
+      
+      this.vx += (this.baseVx - this.vx) * 0.04;
+      this.vy += (this.baseVy - this.vy) * 0.04;
+      
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      if (this.x < -20 || this.x > width + 20 || this.y < -20 || this.y > height + 20) {
+        this.reset(false);
+      }
+    }
+    
+    draw(cx, cy) {
+      const rx = this.x + cx * this.depth;
+      const ry = this.y + cy * this.depth;
+      
+      bx.fillStyle = `rgba(255, 255, 255, ${this.alpha * 0.18})`;
+      bx.beginPath();
+      bx.arc(rx, ry, this.r * 2.5, 0, Math.PI * 2);
+      bx.fill();
+      
+      bx.fillStyle = `rgba(255, 255, 255, ${this.alpha * 0.8})`;
+      bx.beginPath();
+      bx.arc(rx, ry, this.r, 0, Math.PI * 2);
+      bx.fill();
+    }
+  }
+  
+  function initParticles() {
+    particles = [];
+    const count = getParticleCount();
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+  
+  initParticles();
+  
+  window.addEventListener('resize', () => {
+    width = bc.width = window.innerWidth;
+    height = bc.height = window.innerHeight;
+    initParticles();
+  });
+  
+  function updateMouse(x, y) {
+    if (mouse.lastX !== null) {
+      const dx = x - mouse.lastX;
+      const dy = y - mouse.lastY;
+      mouse.speed = Math.hypot(dx, dy);
+    }
+    mouse.x = x;
+    mouse.y = y;
+    mouse.lastX = x;
+    mouse.lastY = y;
+    mouse.active = true;
+    
+    camera.targetX = (x - width / 2) * -0.06;
+    camera.targetY = (y - height / 2) * -0.06;
+  }
+  
+  window.addEventListener('mousemove', e => {
+    updateMouse(e.clientX, e.clientY);
+  });
+  
+  window.addEventListener('mouseleave', () => {
+    mouse.active = false;
+    camera.targetX = 0;
+    camera.targetY = 0;
+  });
+  
+  window.addEventListener('touchstart', e => {
+    if (e.touches.length > 0) {
+      mouse.lastX = e.touches[0].clientX;
+      mouse.lastY = e.touches[0].clientY;
+      updateMouse(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+  
+  window.addEventListener('touchmove', e => {
+    if (e.touches.length > 0) {
+      updateMouse(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+  
+  window.addEventListener('touchend', () => {
+    mouse.active = false;
+    camera.targetX = 0;
+    camera.targetY = 0;
+  }, { passive: true });
+  
+  function animate() {
+    bx.fillStyle = '#000000';
+    bx.fillRect(0, 0, width, height);
+    
+    mouse.speed *= 0.9;
+    
+    camera.x += (camera.targetX - camera.x) * 0.05;
+    camera.y += (camera.targetY - camera.y) * 0.05;
+    
+    particles.forEach(p => p.update());
+    
+    const maxDist = 95;
+    for (let i = 0; i < particles.length; i++) {
+      const pi = particles[i];
+      const rix = pi.x + camera.x * pi.depth;
+      const riy = pi.y + camera.y * pi.depth;
+      
+      for (let j = i + 1; j < particles.length; j++) {
+        const pj = particles[j];
+        
+        if (Math.abs(pi.depth - pj.depth) > 0.4) continue;
+        
+        const rjx = pj.x + camera.x * pj.depth;
+        const rjy = pj.y + camera.y * pj.depth;
+        
+        const dx = rjx - rix;
+        const dy = rjy - riy;
+        const dist = Math.hypot(dx, dy);
+        
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.16 * Math.min(pi.alpha, pj.alpha);
+          bx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+          bx.lineWidth = 0.5 * pi.depth;
+          bx.beginPath();
+          bx.moveTo(rix, riy);
+          bx.lineTo(rjx, rjy);
+          bx.stroke();
+        }
+      }
+    }
+    
+    particles.forEach(p => p.draw(camera.x, camera.y));
+    
+    requestAnimationFrame(animate);
+  }
+  
+  requestAnimationFrame(animate);
 })();
-
-// ── FLOATING PARTICLES ──
-for(let i=0;i<22;i++){
-  const p=document.createElement('div');p.className='particle';
-  p.style.left=Math.random()*100+'vw';
-  p.style.animationDuration=(7+Math.random()*14)+'s';
-  p.style.animationDelay=(-Math.random()*16)+'s';
-  p.style.opacity=Math.random()*.45;
-  p.style.background=i%3===0?'var(--neon-purple)':i%3===1?'var(--neon-pink)':'var(--neon-cyan)';
-  document.body.appendChild(p);
-}
 
 // ── SCROLL REVEAL ──
 const obs=new IntersectionObserver(ents=>{ents.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
 document.querySelectorAll('.reveal,.tl-item').forEach(el=>obs.observe(el));
+
+// ── RANDOMIZED FLOATING ANGLE/DELAY FOR CARDS ──
+document.querySelectorAll('.xp-card, .skill-category, .project-card, .cert-card').forEach(el => {
+  el.style.animationDelay = `${-Math.random() * 8}s`;
+  el.style.animationDuration = `${5 + Math.random() * 4}s`;
+});
 
 // ── CONTACT FORM (EmailJS) ──
 // Replace these 2 values after creating your EmailJS account:
@@ -1324,8 +1599,19 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 
   document.addEventListener('keydown',e=>keys[e.key]=true);
   document.addEventListener('keyup',e=>keys[e.key]=false);
-  cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();targetX=e.clientX-r.left;});
+  cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();targetX=(e.clientX-r.left)*(W/r.width);});
   cv.addEventListener('click',()=>{if(!running)start();});
+
+  function handleTouch(e){
+    if(e.touches.length>0){
+      e.preventDefault();
+      const r=cv.getBoundingClientRect();
+      targetX=(e.touches[0].clientX-r.left)*(W/r.width);
+      if(!running)start();
+    }
+  }
+  cv.addEventListener('touchstart',handleTouch,{passive:false});
+  cv.addEventListener('touchmove',handleTouch,{passive:false});
 
   function start(){
     running=true;score=0;orbs=[];bugs=[];sparks=[];
